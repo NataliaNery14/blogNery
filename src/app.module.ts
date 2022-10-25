@@ -9,6 +9,7 @@ import { Usuario } from './usuario/entities/usuario.entities';
 import { UsuarioModule, } from './usuario/usuario.module';
 
 
+
 @Module({
   imports: [TypeOrmModule.forRoot({
     type: 'mysql',
@@ -16,7 +17,7 @@ import { UsuarioModule, } from './usuario/usuario.module';
     port: 3306,
     username:'root',
     password:'root',
-    database:'db_blognaty',
+    database:'db_blogNery',
     entities: [Postagem, Tema, Usuario],
     synchronize: true
   }),
@@ -26,7 +27,7 @@ import { UsuarioModule, } from './usuario/usuario.module';
   UsuarioModule
 
   ],
-  controllers:[AppController],
+  controllers:[],
   providers: [],
 })
 export class AppModule {}
