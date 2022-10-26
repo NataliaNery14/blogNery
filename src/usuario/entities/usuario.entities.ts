@@ -1,5 +1,5 @@
 import { IsNotEmpty, MinLength, } from "class-validator";
-import { Postagem } from "src/postagem/entidade/postagem.entity";
+import { Postagem } from "../../postagem/entidade/postagem.entity" 
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 

@@ -17,14 +17,16 @@ import { UsuarioModule, } from './usuario/usuario.module';
     port: 3306,
     username:'root',
     password:'root',
-    database:'db_blogNery',
+    database:'db_blognery',
     entities: [Postagem, Tema, Usuario],
     synchronize: true
   }),
   TemaModule,
   AuthModule,
   PostagemModule,
-  UsuarioModule
+  UsuarioModule,
+  
+
 
   ],
   controllers:[],

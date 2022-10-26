@@ -5,9 +5,6 @@ import { Tema } from "../entities/tema.entities";
 
 @Injectable ()
 export class TemaService {
-    findByDescricao(_descricao: string): Promise<Tema[]> {
-        throw new Error("Method not implemented.");
-    }
     constructor (
     @InjectRepository(Tema)
     private temaRepository: Repository<Tema>
@@ -17,7 +14,8 @@ export class TemaService {
         return await this.temaRepository.find ({
             relations: {
                 postagem: true
-            }        })
+            }        
+        });
     }
 
     async findById (id: number): Promise<Tema> {
@@ -35,12 +33,15 @@ export class TemaService {
     return tema; 
     }
 
-    async findDescricao (descricao: string): Promise<Tema[]> {
+    async findByDescricao (descricao: string): Promise<Tema[]> {
         return await this.temaRepository.find({
             where: {
-                descricao: ILike(`%${descricao}`)
+                descricao: ILike(`%${descricao}%`)
+            },
+            relations: {
+                postagem: true
             }
-        })
+        });
     }
 
     async create (tema: Tema): Promise<Tema> {
@@ -48,6 +49,7 @@ export class TemaService {
     }
 
     async update (tema: Tema): Promise<Tema>{
+
         let buscaTema = await this.findById(tema.id);
 
         if(!buscaTema || !tema.id)

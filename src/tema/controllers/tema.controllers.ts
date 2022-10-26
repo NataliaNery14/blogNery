@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, UseGuards } from "@nestjs/common";
-import { JwtAuthGuard } from "src/auth/guard/jwt-auth.guard";
+import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
 import { Tema } from "../entities/tema.entities";
 import { TemaService } from "../services/tema.services";
 
@@ -10,14 +10,13 @@ import { TemaService } from "../services/tema.services";
 export class TemaController {
     constructor (private readonly temaService: TemaService) {}
 
-    @UseGuards(JwtAuthGuard)
     @Get()
     @HttpCode(HttpStatus.OK)
     findAll (): Promise<Tema[]> {
         return this.temaService.findALl();
     }
 
-    @Get()
+    @Get('/:id')
     @HttpCode(HttpStatus.OK)
     findById (
         @Param('id', ParseIntPipe)
