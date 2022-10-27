@@ -8,6 +8,7 @@ import { Usuario } from "../entities/usuario.entities";
 
 
 @Injectable()
+
 export class UsuarioService{
     constructor(
         @InjectRepository(Usuario)
@@ -20,7 +21,7 @@ export class UsuarioService{
             where:{
                 usuario: usuario
             }
-        })
+        });
     }
 
     async findAll(): Promise<Usuario[]> {
@@ -45,7 +46,7 @@ export class UsuarioService{
         });
 
         if (!usuario)
-            throw new HttpException('Não avhei o Usuario !!', HttpStatus.NOT_FOUND);
+            throw new HttpException('Não achei o Usuario !!', HttpStatus.NOT_FOUND);
             
         return usuario; 
     }

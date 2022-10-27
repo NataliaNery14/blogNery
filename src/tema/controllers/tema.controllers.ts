@@ -18,46 +18,31 @@ export class TemaController {
 
     @Get('/:id')
     @HttpCode(HttpStatus.OK)
-    findById (
-        @Param('id', ParseIntPipe)
-        id: number
-    ): Promise<Tema> {
+    findById (@Param('id', ParseIntPipe)id: number): Promise<Tema> {
         return this.temaService.findById(id);
     }
 
     @Get('/descricao/:descricao')
     @HttpCode(HttpStatus.OK)
-    findByDescricao (
-        @Param('descricao')
-        descricao: string
-    ): Promise<Tema[]> {
+    findByDescricao (@Param('descricao')descricao: string): Promise<Tema[]> {
         return this.temaService.findByDescricao(descricao);
     }
 
     @Post()
     @HttpCode(HttpStatus.CREATED)
-    create (
-        @Body()
-        tema: Tema
-    ): Promise<Tema> {
+    create (@Body()tema: Tema): Promise<Tema> {
         return this.temaService.create(tema);
     }
 
     @Put()
     @HttpCode(HttpStatus.OK)
-    UpdateDateColumn(
-        @Body()
-        tema: Tema
-    ): Promise<Tema> {
+    UpdateDateColumn(@Body()tema: Tema): Promise<Tema> {
         return this.temaService.update(tema);
     }
 
     @Delete('/:id')
     @HttpCode(HttpStatus.NO_CONTENT)
-    delete (
-        @Param('id', ParseIntPipe)
-        id: number
-    ) {
+    delete (@Param('id', ParseIntPipe)id: number) {
         return this.temaService.delete(id)
     }
 }

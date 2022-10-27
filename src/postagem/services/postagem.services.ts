@@ -13,10 +13,10 @@ export class PostagemServices {
     ) {}
 
     async findAll (): Promise<Postagem[]>{
-    return await this.PostegemRepository.find({
-        relations: {
-            tema: true,
-            usuario: true
+        return await this.PostegemRepository.find({
+            relations: {
+             tema: true,
+                usuario: true
         }
     })
     
@@ -44,7 +44,7 @@ export class PostagemServices {
     async findByTitulo (titulo:string): Promise<Postagem[]> {
         return await this.PostegemRepository.find({
             where: {
-                titulo: ILike(`%${titulo}`)
+                titulo: ILike(`%${titulo}%`)
             },
             relations: {
                 tema: true,

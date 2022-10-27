@@ -25,9 +25,6 @@ import { UsuarioModule, } from './usuario/usuario.module';
   AuthModule,
   PostagemModule,
   UsuarioModule,
-  
-
-
   ],
   controllers:[],
   providers: [],
