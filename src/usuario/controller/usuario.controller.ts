@@ -7,10 +7,11 @@ import { UsuarioService } from "../service/usuario.service";
 
 @ApiTags('Usuario')
 @Controller("/usuario")
-@ApiBearerAuth()
+
 export class UsuarioController {
     constructor(private readonly usarioService: UsuarioService){}
 
+    @ApiBearerAuth()
     @UseGuards(JwtAuthGuard)
     @Get('/all')
     @HttpCode(HttpStatus.OK)
@@ -18,12 +19,14 @@ export class UsuarioController {
         return this.usarioService.findAll();
     }
 
+    @ApiTags('Usuario')
     @HttpCode(HttpStatus.CREATED)
     @Post('/cadastrar')
     async create(@Body() usuario: Usuario): Promise<Usuario> {
         return await this.usarioService.create(usuario);
     }
 
+    @ApiBearerAuth()
     @UseGuards(JwtAuthGuard)
     @Put('/atualizar')
     @HttpCode(HttpStatus.OK)
