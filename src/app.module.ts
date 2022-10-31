@@ -25,7 +25,7 @@ import { UsuarioModule, } from './usuario/usuario.module';
     synchronize: true
   }), */
 
-  TemaModule.forRoot({
+  TypeOrmModule.forRoot({
     type: 'postgres',
     url: process.env.DATABASE_URL,
     logging: false,

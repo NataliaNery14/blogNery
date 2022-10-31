@@ -12,8 +12,4 @@ import { TemaService } from "./services/tema.services";
     exports: [TypeOrmModule]
 })
 
-export class TemaModule {
-  static forRoot(arg0: { type: string; url: string; logging: boolean; dropSchema: boolean; ssl: { rejectUnauthorized: boolean; }; synchronize: boolean; autoLoadEntities: boolean; }): import("@nestjs/common").Type<any> | import("@nestjs/common").DynamicModule | Promise<import("@nestjs/common").DynamicModule> | import("@nestjs/common").ForwardReference<any> {
-    throw new Error('Method not implemented.');
-  }
-}
+export class TemaModule {}
