@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { rootCertificates } from 'tls';
 import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
 import { Postagem } from './postagem/entidade/postagem.entity';
@@ -12,7 +13,8 @@ import { UsuarioModule, } from './usuario/usuario.module';
 
 
 @Module({
-  imports: [TypeOrmModule.forRoot({
+  imports: [
+    /* TypeOrmModule.forRoot({
     type: 'mysql',
     host: 'localhost',
     port: 3306,
@@ -21,8 +23,17 @@ import { UsuarioModule, } from './usuario/usuario.module';
     database:'db_blognery',
     entities: [Postagem, Tema, Usuario],
     synchronize: true
+  }), */
+
+  TemaModule.forRoot({
+    type: 'postgres',
+    url: process.env.DATABASE_URL,
+    logging: false,
+    dropSchema: false,
+    ssl: {rejectUnauthorized: false,},
+    synchronize: true,
+    autoLoadEntities: true,
   }),
-  TemaModule,
   AuthModule,
   PostagemModule,
   UsuarioModule,
